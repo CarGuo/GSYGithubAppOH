@@ -1,9 +1,8 @@
 import { ThemePalette, LIGHT_PALETTE, THEME_PALETTE_KEY } from '../theme/ThemeManager';
 import { SAFE_AREA_TOP_KEY } from '../utils/SafeAreaInsets';
-import { GSYColor, GSYFontSize, GSYIconSize } from '../style/Theme';
+import { GSYColor, GSYFontSize, GSYIconSize, GSYSpacing } from '../style/Theme';
 
 const APP_BAR_SIDE_WIDTH: number = 64;
-const APP_BAR_TOUCH_SIZE: number = 48;
 const APP_BAR_TITLE_LINE_HEIGHT: number = 28;
 const APP_BAR_SUBTITLE_LINE_HEIGHT: number = 18;
 
@@ -63,6 +62,10 @@ export struct AppBar {
       return GSYColor.white;
     }
     return this.actionColor;
+  }
+
+  private resolveActionMaterialBackground(): ResourceColor {
+    return this.useTheme ? GSYColor.hdsMaterialSurfaceDark : GSYColor.transparent;
   }
 
   @Builder
@@ -243,10 +246,21 @@ export struct AppBar {
       ? 'appbar_action_' + side + '_' + action.iconKey
       : 'appbar_action_' + side + '_' + idx.toString())
     .type(ButtonType.Normal)
-    .backgroundColor(Color.Transparent)
+    .backgroundColor(this.resolveActionMaterialBackground())
+    .border({
+      width: 0.5,
+      color: GSYColor.hdsMaterialBorder,
+    })
+    .borderRadius(GSYSpacing.hdsActionButtonRadius)
     .padding({ left: 8, right: 8 })
-    .width(48)
-    .height(this.barHeight)
+    .width(GSYSpacing.hdsActionButtonSize)
+    .height(GSYSpacing.hdsActionButtonSize)
+    .margin({
+      top: (this.barHeight - GSYSpacing.hdsActionButtonSize) / 2,
+      bottom: (this.barHeight - GSYSpacing.hdsActionButtonSize) / 2,
+      left: 4,
+      right: 4,
+    })
     // 显式 hit area 与拦截：避免 SideBarContainer 主内容层把点击吞掉
     .hitTestBehavior(HitTestMode.Block)
     .onClick((): void => {
@@ -266,10 +280,21 @@ export struct AppBar {
         .fontColor(this.resolveActionColor());
     }
     .type(ButtonType.Normal)
-    .backgroundColor(Color.Transparent)
+    .backgroundColor(this.resolveActionMaterialBackground())
+    .border({
+      width: 0.5,
+      color: GSYColor.hdsMaterialBorder,
+    })
+    .borderRadius(GSYSpacing.hdsActionButtonRadius)
     .padding({ left: 12, right: 8 })
-    .width(APP_BAR_TOUCH_SIZE)
-    .height(this.barHeight)
+    .width(GSYSpacing.hdsActionButtonSize)
+    .height(GSYSpacing.hdsActionButtonSize)
+    .margin({
+      top: (this.barHeight - GSYSpacing.hdsActionButtonSize) / 2,
+      bottom: (this.barHeight - GSYSpacing.hdsActionButtonSize) / 2,
+      left: 4,
+      right: 4,
+    })
     .hitTestBehavior(HitTestMode.Block)
     .onClick((): void => {
       this.onBack();

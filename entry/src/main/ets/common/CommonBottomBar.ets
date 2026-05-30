@@ -42,6 +42,7 @@ export struct CommonBottomBar {
   rootHeight: number = 0;
   showShadow: boolean = true;
   repoActionStyle: boolean = false;
+  materialFloatingStyle: boolean = false;
   trailingItemId: string = 'branch';
   @State private dataListRev: number = 0;
 
@@ -159,12 +160,17 @@ export struct CommonBottomBar {
       bottom: this.rootMarginBottom,
     })
     .borderRadius(this.rootBorderRadius)
-    .backgroundColor(this.rootBackgroundColor)
+    .backgroundColor(this.materialFloatingStyle ? GSYColor.hdsMaterialSurface : this.rootBackgroundColor)
+    .backgroundBlurStyle(this.materialFloatingStyle ? BlurStyle.COMPONENT_REGULAR : BlurStyle.NONE)
+    .border(this.materialFloatingStyle ? {
+      width: 0.5,
+      color: GSYColor.hdsMaterialBorder,
+    } : undefined)
     .shadow(this.showShadow ? {
-      radius: GSYShadow.radius,
-      color: GSYColor.line,
+      radius: this.materialFloatingStyle ? 14 : GSYShadow.radius,
+      color: this.materialFloatingStyle ? GSYColor.hdsMaterialShadow : GSYColor.line,
       offsetX: 0,
-      offsetY: -GSYShadow.elevation,
+      offsetY: this.materialFloatingStyle ? -2 : -GSYShadow.elevation,
     } : undefined)
     .alignItems(VerticalAlign.Center);
   }

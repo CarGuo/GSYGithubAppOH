@@ -40,6 +40,10 @@ export class GSYColor {
   static readonly tabUnSelect: string = '#a6aaaf';
   static readonly hdsFloatingTabLight: string = '#E6FFFFFF';
   static readonly hdsFloatingTabMask: string = '#E6FFFFFF';
+  static readonly hdsMaterialSurface: string = '#E6FFFFFF';
+  static readonly hdsMaterialSurfaceDark: string = '#18FFFFFF';
+  static readonly hdsMaterialBorder: string = '#2EFFFFFF';
+  static readonly hdsMaterialShadow: string = '#26000000';
 
   // GitHub Issue 业务色（OH 增强：RN 端用 RN 平台关键字 'green'/'red'，
   // OH 改用 GitHub Primer 官方调色板 #2cbe4e/#cb2431 视觉更精确，登记 OH 增强 token）
@@ -148,6 +152,11 @@ export class GSYSpacing {
   static readonly hdsFloatingTabSideMargin: number = 16;
   static readonly hdsFloatingTabBottomMargin: number = 12;
   static readonly hdsFloatingTabMaskHeight: number = 108;
+  static readonly hdsActionButtonSize: number = 36;
+  static readonly hdsActionButtonRadius: number = 18;
+  static readonly hdsFloatingBarSideMargin: number = 12;
+  static readonly hdsFloatingBarBottomMargin: number = 8;
+  static readonly hdsFloatingBarRadius: number = 26;
   static readonly normalNumberOfLine: number = 4;
   // 系统状态栏 + LiveCapsule(metaball) 高度容纳；
   // 真机 dump LiveMetaBallBaseVm bounds=[380,19][940,136]，胶囊到 y=136

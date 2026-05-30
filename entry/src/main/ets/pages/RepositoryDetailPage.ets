@@ -626,11 +626,16 @@ export struct RepositoryDetailPage {
       .id('repo_branch_menu_root')
       .width(BRANCH_MENU_WIDTH)
       .constraintSize({ maxHeight: BRANCH_MENU_MAX_HEIGHT })
-      .backgroundColor(GSYColor.white)
-      .borderRadius(6)
+      .backgroundColor(GSYColor.hdsMaterialSurface)
+      .backgroundBlurStyle(BlurStyle.COMPONENT_REGULAR)
+      .border({
+        width: 0.5,
+        color: GSYColor.hdsMaterialBorder,
+      })
+      .borderRadius(12)
       .shadow({
-        radius: 10,
-        color: '#33000000',
+        radius: 16,
+        color: GSYColor.hdsMaterialShadow,
         offsetX: 0,
         offsetY: 2,
       })
@@ -745,6 +750,17 @@ export struct RepositoryDetailPage {
     .height(GSYSpacing.tabBarHeight)
     .borderRadius(GSYSpacing.tabBarHeight / 2)
     .backgroundColor(GSYColor.primary)
+    .backgroundBlurStyle(BlurStyle.COMPONENT_REGULAR)
+    .border({
+      width: 0.5,
+      color: GSYColor.hdsMaterialBorder,
+    })
+    .shadow({
+      radius: 14,
+      color: GSYColor.hdsMaterialShadow,
+      offsetX: 0,
+      offsetY: 4,
+    })
     .justifyContent(FlexAlign.Center)
     .alignItems(VerticalAlign.Center)
     .margin({
@@ -941,7 +957,12 @@ export struct RepositoryDetailPage {
             rootId: 'repo_detail_bottom_bar',
             dataList: this.buildBottomBarItems(),
             repoActionStyle: true,
+            materialFloatingStyle: true,
             trailingItemId: 'branch',
+            rootMarginHorizontal: GSYSpacing.hdsFloatingBarSideMargin,
+            rootMarginBottom: GSYSpacing.hdsFloatingBarBottomMargin,
+            rootBorderRadius: GSYSpacing.hdsFloatingBarRadius,
+            rootHeight: GSYSpacing.bottomBarDefault,
           });
         }
       }
