@@ -1,0 +1,23 @@
+{
+  "src": [
+    "pages/CommonComponentsPage",
+    "pages/HomePageHost",
+    "pages/DynamicTabEmptyHostPage",
+    "pages/DynamicTabListHostPage",
+    "pages/LoginPage",
+    "pages/UserDetailHostPage",
+    "pages/RepositoryDetailHostPage",
+    "pages/RepoTabsHostPage",
+    "pages/IssueDetailHostPage",
+    "pages/MyTabPageHost",
+    "pages/SettingPage",
+    "pages/NotifyHostPage",
+    "pages/SearchHostPage",
+    "pages/SubListHostPage",
+    "pages/ImagePreviewHostPage",
+    "pages/OauthHostPage",
+    "pages/DrawerHostPage",
+    "pages/ContributionHeatmapHostPage",
+    "pages/ReadHistoryHostPage"
+  ]
+}

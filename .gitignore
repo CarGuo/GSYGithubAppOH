@@ -1,0 +1,30 @@
+# Build artifacts
+build/
+.hvigor/
+.cxx/
+node_modules/
+oh_modules/
+*.log
+.DS_Store
+local.properties
+entry/.test/
+
+# DevEco signing material — keep template, ignore secrets
+signature/*.p12
+signature/*.cer
+signature/*.csr
+signature/*.p7b
+
+# Local OAuth credentials for GitHub WebView login.
+# Copy entry/src/main/resources/rawfile/oauth.local.example.json to oauth.local.json.
+entry/src/main/resources/rawfile/oauth.local.json
+
+# IDE
+.idea/
+.vscode/
+
+# 真机回归运行产物（可能含 hilog 网络请求 / 个人信息），按 milestone 显式归档时再单独提交
+harness/regression/reports/M5/
+harness/regression/reports/M6/home-smoke-*/
+harness/regression/reports/M6/device-smoke-*/hilog_business.log
+harness/regression/reports/welcome-login-*/

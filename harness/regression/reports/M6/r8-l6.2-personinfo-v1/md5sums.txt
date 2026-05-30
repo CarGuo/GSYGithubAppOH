@@ -1,0 +1,2 @@
+MD5 (harness/regression/reports/M6/r8-l6.2-personinfo-v1/personinfo_rendered.jpeg) = ee73012136d0d6630fb78d9c4f897693
+MD5 (harness/regression/reports/M6/r8-l6.2-personinfo-v1/setting_with_btn.jpeg) = cccae7b07a69685a4440e953be563a92

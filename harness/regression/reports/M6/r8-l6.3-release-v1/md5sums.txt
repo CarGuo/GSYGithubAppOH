@@ -1,0 +1,2 @@
+MD5 (oh_release_v1.jpeg) = 7e1390f5eef7fa526afefd9cec5013d2
+MD5 (oh_release_tag_v1.jpeg) = 9d8d4e499696583b918ab9a29d6a8fa7

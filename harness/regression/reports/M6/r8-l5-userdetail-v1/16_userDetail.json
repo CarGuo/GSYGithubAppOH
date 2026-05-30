@@ -1,0 +1,56 @@
+{
+  "scenario": "userDetail",
+  "key": "16_userDetail",
+  "target": "127.0.0.1:5555",
+  "bundle": "cn.gsy.githubapp",
+  "ability": "EntryAbility",
+  "boot_command": "hdc shell aa start -a EntryAbility -b cn.gsy.githubapp --ps bootUser CarGuo",
+  "demo_user": "CarGuo",
+  "captured_at": "2026-05-26T13:44:25+08:00",
+  "screenshot": "16_userDetail.jpeg",
+  "screenshot_md5": "05bef013f706ea1ffb7cd4f589d9d6e2",
+  "screenshot_size": {
+    "width": 1320,
+    "height": 2856,
+    "format": "jpeg"
+  },
+  "boot_ts_chain": [
+    {
+      "stage": "EntryAbility.handleBootUserInjection",
+      "ts": 1779774275027,
+      "value": "CarGuo"
+    },
+    {
+      "stage": "HomePage.scheduleBootUser pre-schedule",
+      "ts": 1779774278263,
+      "login": "CarGuo"
+    },
+    {
+      "stage": "HomePage.scheduleBootUser pre-push",
+      "ts": 1779774278865
+    },
+    {
+      "stage": "HomePage.scheduleBootUser post-push",
+      "ts": 1779774278868
+    },
+    {
+      "stage": "UserDetailPage.tryAdoptBootUser adopted",
+      "ts": 1779774278874,
+      "login": "CarGuo"
+    }
+  ],
+  "asserts": [
+    { "id": "user_detail_appbar_title", "expected": "@CarGuo", "ok": 1 },
+    { "id": "user_detail_avatar_size", "expected": "GSYIconSize.large=80", "ok": 1 },
+    { "id": "user_detail_name", "expected": "Shuyu Guo", "ok": 1 },
+    { "id": "user_detail_login", "expected": "CarGuo", "ok": 1 },
+    { "id": "user_detail_company_iconText", "expected": "FA_GROUP + 公众号 GSYTech", "ok": 1 },
+    { "id": "user_detail_location_iconText", "expected": "FA_MAP_MARKER + US", "ok": 1 },
+    { "id": "user_detail_bio", "expected": "Flutter & Dart GDE，Mobile Application Developer, Love cat but named car", "ok": 1 },
+    { "id": "user_detail_created_at", "expected": "创建于：2015-01-30", "ok": 1 },
+    { "id": "user_detail_follow_button", "expected": "取消关注 (描边)", "ok": 1 },
+    { "id": "user_detail_counts_5col", "expected": "仓库/粉丝/关注/星标/荣耀 (---/---) hintNum 兜底", "ok": 1 },
+    { "id": "user_detail_event_list", "expected": "EventItem rowBuilder 渲染 2+ 行 created comment on issue ...", "ok": 1 }
+  ],
+  "result": { "ok": 11, "fail": 0 }
+}

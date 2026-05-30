@@ -1,0 +1,28 @@
+{
+  "string": [
+    {
+      "name": "app_name",
+      "value": "CarGuo's GitHub"
+    },
+    {
+      "name": "EntryAbility_label",
+      "value": "CarGuo's GitHub"
+    },
+    {
+      "name": "module_desc",
+      "value": "GSYGithubApp HarmonyOS entry module"
+    },
+    {
+      "name": "ability_desc",
+      "value": "GSYGithubApp main ability"
+    },
+    {
+      "name": "perm_read_media",
+      "value": "Used to read images and files for sharing"
+    },
+    {
+      "name": "perm_write_media",
+      "value": "Used to save images and files locally"
+    }
+  ]
+}

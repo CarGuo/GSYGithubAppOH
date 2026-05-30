@@ -1,0 +1,91 @@
+# OpenHarmony 项目 CI
+# 说明：OH SDK 当前未在 Linux 官方支持 hvigor，因此本工作流仅做：
+#   1) 静态 lint（ripgrep 校验 .ets 不含 @ts-ignore / any / console.log）
+#   2) 测试套件清单核对（scripts/ci-logic-only.sh）
+# 真机测试仍需 macOS / Windows + DevEco，参见 harness/playbooks/ci.md。
+
+name: oh-ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint-and-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      # 占位：OH SDK 在 Linux 上未官方支持 hvigor / hpm-cli，此步骤仅安装占位。
+      # 后续 huawei 提供 Linux SDK 后，可在此安装 hpm-cli 并切到完整 hvigor test。
+      - name: Install hpm-cli (placeholder, OH SDK Linux 未官方支持)
+        run: npm i -g @ohos/hpm-cli || echo "hpm-cli install skipped (Linux 限制)"
+
+      - name: 校验目录结构
+        run: |
+          set -e
+          test -d entry/src/main/ets
+          test -d entry/src/ohosTest/ets/test
+          test -f entry/src/ohosTest/ets/test/List.test.ets
+          test -f hvigorfile.ts
+          test -f build-profile.json5
+          test -f oh-package.json5
+          echo "[oh-ci] 目录结构校验通过"
+
+      - name: ETS 静态 lint（ripgrep）
+        run: |
+          set -e
+          mkdir -p .ci-report
+          REPORT=.ci-report/lint-report.txt
+          : > "${REPORT}"
+          STATUS=0
+
+          echo "== 检查 // @ts-ignore ==" | tee -a "${REPORT}"
+          if rg -n --glob '*.ets' '//\s*@ts-ignore' entry; then
+            echo "[FAIL] 发现 // @ts-ignore" | tee -a "${REPORT}"
+            STATUS=1
+          else
+            echo "[OK] 无 // @ts-ignore" | tee -a "${REPORT}"
+          fi
+
+          echo "== 检查 any 关键字 ==" | tee -a "${REPORT}"
+          if rg -n --glob '*.ets' '\bany\b' entry; then
+            echo "[FAIL] 发现 any" | tee -a "${REPORT}"
+            STATUS=1
+          else
+            echo "[OK] 无 any" | tee -a "${REPORT}"
+          fi
+
+          echo "== 检查 console.log ==" | tee -a "${REPORT}"
+          if rg -n --glob '*.ets' 'console\.log' entry; then
+            echo "[FAIL] 发现 console.log" | tee -a "${REPORT}"
+            STATUS=1
+          else
+            echo "[OK] 无 console.log" | tee -a "${REPORT}"
+          fi
+
+          echo "[oh-ci] lint 报告: ${REPORT}"
+          exit ${STATUS}
+
+      - name: 跑逻辑套件清单核对
+        run: |
+          chmod +x scripts/ci-logic-only.sh
+          ./scripts/ci-logic-only.sh
+
+      # 注：./hvigorw test 在 ubuntu-latest 不可行（OH SDK 未官方支持 Linux），
+      # 因此此处仅做文件存在 + 套件计数校验；真实 hvigor test 走 macOS 本地。
+
+      - name: Upload lint report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: oh-ci-lint-report
+          path: .ci-report/

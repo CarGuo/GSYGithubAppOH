@@ -1,0 +1,28 @@
+{
+  "string": [
+    {
+      "name": "app_name",
+      "value": "CarGuo's GitHub"
+    },
+    {
+      "name": "EntryAbility_label",
+      "value": "CarGuo's GitHub"
+    },
+    {
+      "name": "module_desc",
+      "value": "GSYGithubApp 鸿蒙端入口模块"
+    },
+    {
+      "name": "ability_desc",
+      "value": "GSYGithubApp 主 Ability"
+    },
+    {
+      "name": "perm_read_media",
+      "value": "用于读取图片与文件以便分享"
+    },
+    {
+      "name": "perm_write_media",
+      "value": "用于将图片与文件保存到本地"
+    }
+  ]
+}

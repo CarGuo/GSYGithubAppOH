@@ -1,0 +1,5 @@
+{
+  "client_id": "YOUR_GITHUB_OAUTH_CLIENT_ID",
+  "client_secret": "YOUR_GITHUB_OAUTH_CLIENT_SECRET",
+  "redirect_uri": "gsygithubapp://authed"
+}

@@ -1,0 +1,76 @@
+export enum RouteName {
+  Welcome = 'Welcome',
+  Login = 'Login',
+  LoginWeb = 'LoginWeb',
+  Home = 'Home',
+  Detail = 'Detail',
+  Search = 'Search',
+  Profile = 'Profile',
+  About = 'About',
+  Notify = 'Notify',
+  Issue = 'Issue',
+  IssueDetail = 'IssueDetail',
+  RepositoryDetail = 'RepositoryDetail',
+  UserDetail = 'UserDetail',
+  CodeDetail = 'CodeDetail',
+  PushDetail = 'PushDetail',
+  RepositoryStar = 'RepositoryStar',
+  RepositoryFork = 'RepositoryFork',
+  RepositoryWatcher = 'RepositoryWatcher',
+  UserFollower = 'UserFollower',
+  UserFollowed = 'UserFollowed',
+  Trend = 'Trend',
+  Dynamic = 'Dynamic',
+  Setting = 'Setting',
+  Honor = 'Honor',
+  Custom = 'Custom',
+  ReadHistory = 'ReadHistory',
+  PersonInfo = 'PersonInfo',
+  Release = 'Release',
+  Photo = 'Photo',
+  WebPage = 'WebPage',
+  CommonList = 'CommonList',
+}
+
+export const ROUTE_NAMES: string[] = [
+  RouteName.Welcome,
+  RouteName.Login,
+  RouteName.LoginWeb,
+  RouteName.Home,
+  RouteName.Detail,
+  RouteName.Search,
+  RouteName.Profile,
+  RouteName.About,
+  RouteName.Notify,
+  RouteName.Issue,
+  RouteName.IssueDetail,
+  RouteName.RepositoryDetail,
+  RouteName.UserDetail,
+  RouteName.CodeDetail,
+  RouteName.PushDetail,
+  RouteName.RepositoryStar,
+  RouteName.RepositoryFork,
+  RouteName.RepositoryWatcher,
+  RouteName.UserFollower,
+  RouteName.UserFollowed,
+  RouteName.Trend,
+  RouteName.Dynamic,
+  RouteName.Setting,
+  RouteName.Honor,
+  RouteName.Custom,
+  RouteName.ReadHistory,
+  RouteName.PersonInfo,
+  RouteName.Release,
+  RouteName.Photo,
+  RouteName.WebPage,
+  RouteName.CommonList,
+];
+
+export function isKnownRoute(name: string): boolean {
+  for (let i: number = 0; i < ROUTE_NAMES.length; i++) {
+    if (ROUTE_NAMES[i] === name) {
+      return true;
+    }
+  }
+  return false;
+}

@@ -1,0 +1,10 @@
+{
+  "modelVersion": "6.1.0",
+  "name": "gsygithubappoh",
+  "version": "1.0.0",
+  "description": "GSYGithubApp HarmonyOS (ArkUI) version, feature-aligned with the React Native edition.",
+  "main": "",
+  "author": "guoshuyu",
+  "license": "MIT",
+  "dependencies": {}
+}

@@ -1,0 +1,5 @@
+emulator 
+emulator 6.1.0.115(SP11DEVC00E115R4P11) 
+TS=20260526-090633
+BUNDLE=cn.gsy.githubapp
+PID=23813
